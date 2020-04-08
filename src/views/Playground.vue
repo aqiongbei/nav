@@ -1,6 +1,6 @@
 <template>
     <div class="main-wrapper">
-        HOME
+        PLAYGROUND
     </div>
 </template>
 <script>

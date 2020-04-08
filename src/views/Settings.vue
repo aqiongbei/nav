@@ -1,6 +1,6 @@
 <template>
     <div class="main-wrapper">
-        HOME
+        SETTINGS
     </div>
 </template>
 <script>
