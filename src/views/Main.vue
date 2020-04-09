@@ -42,9 +42,7 @@ const NAV_CONFIG = [{
 
 export default {
     name: 'Home',
-    components: {
-        // HelloWorld
-    },
+    components: {},
     data () {
         return {
             NAV_CONFIG,
@@ -63,11 +61,17 @@ export default {
             }
         },
         '$route' (to) {
+            console.log(to)
             this.active = to.path;
+            document.title = `${to.name}-自嗨导航`;
         }
     },
     created () {
-        this.active = this.$route.path;
+        if (this.$route.path == '/') {
+            this.active = '/home';
+        } else {
+            this.active = this.$route.path;
+        }
         window.addEventListener('scroll', (e) => {
             this.last_offset = window.pageYOffset;
         });
@@ -78,6 +82,7 @@ export default {
 <style lang="less">
 .content {
     height: 1200px;
+    padding: 10px 8px;
     background: #f4f4f4;
 }
 .nav {
