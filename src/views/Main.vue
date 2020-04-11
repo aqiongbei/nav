@@ -25,7 +25,7 @@
     </div>
 </template>
 <script>
-// import HelloWorld from '@/components/HelloWorld.vue'
+
 const NAV_CONFIG = [{
     path: '/playground',
     name: '广场',
@@ -54,16 +54,18 @@ export default {
     computed: {},
     watch: {
         last_offset (new_val, old_val) {
-            if (new_val < old_val) {
-                this.show_navbar = true;
+            if (new_val > 140) {
+                if (new_val < old_val) {
+                    this.show_navbar = true;
+                } else {
+                    this.show_navbar = false;
+                }
             } else {
-                this.show_navbar = false;
+                this.show_navbar = true;
             }
         },
         '$route' (to) {
-            console.log(to)
             this.active = to.path;
-            document.title = `${to.name}-自嗨导航`;
         }
     },
     created () {
@@ -75,15 +77,23 @@ export default {
         window.addEventListener('scroll', (e) => {
             this.last_offset = window.pageYOffset;
         });
+        window.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+        });
     },
     methods: {},
 }
 </script>
 <style lang="less">
 .content {
-    height: 1200px;
     padding: 10px 8px;
     background: #f4f4f4;
+    min-height: calc(100vh);
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
 }
 .nav {
     margin: 0 20px;
