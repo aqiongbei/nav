@@ -1,3 +1,5 @@
+const default_id = "link_500";
+
 function getID() {
     let id = default_id;
     if (localStorage.last_id) {

@@ -64,14 +64,20 @@ export default {
                     this.$links.import(JSON.parse(reader.result), option);
                     this.$Message.success('导入成功!');
                 } catch (e) {
-                    this.$Message.error(`导入失败!:${e}`);
+                    this.$Message.error({
+                        content: `导入失败!:${e}`,
+                        duration: 3
+                    });
                 }
                 this.$refs.file_input.value = '';
             }
             let file = this.$refs.file_input.files[0];
             if (file) {
                 if (file.type != 'application/json') {
-                    this.$Message.warning(`别骗我,你这可不是.json文件哦${file.type}`);
+                    this.$Message.warning({
+                        content: `别骗我,你这可不是.json文件哦${file.type}`,
+                        duration: 3
+                    });
                     this.$refs.file_input.value = '';
                 } else {
                     reader.readAsText(file);
