@@ -1,3 +1,5 @@
+import package_json from '@/../package.json'
+
 const settings = [{
     title: '绑定账户',
     name: 'bind-account',
@@ -32,7 +34,7 @@ const settings = [{
     title: '关于',
     name: 'about',
     disabled: false,
-    extra: 'v1.0.1',
+    extra: package_json.version,
     icon: 'md-information-circle',
     to: '/about'
 }];

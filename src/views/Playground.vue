@@ -1,8 +1,8 @@
 <template>
     <div class="playground-wrapper">
-        <Carousel autoplay loop>
+        <Carousel autoplay loop :autoplay-speed="5000">
             <CarouselItem v-for="item of banner" :key="item.id" class="banner-item">
-                <a :href="item.link">
+                <a :href="item.link" target="_blank">
                     <img :src="item.img" alt="">
                     <div class="banner-info" v-if="item.title || item.desc">
                         <h3>{{item.title}}</h3>
@@ -38,13 +38,12 @@ export default {
 <style lang="less">
 .playground-wrapper {
     .banner-item {
-        width: 100%;
         border-radius: 40px;
         position: relative;
         overflow: hidden;
-        background-color: red;
         height: 200px;
         font-size: 0px;
+        text-align: center;
         img {
             height: 200px;
         }

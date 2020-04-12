@@ -59,6 +59,11 @@ export default {
             }
         }
     },
+    watch: {
+        '$route' () {
+            this.getLinks();
+        }
+    },
     created () {
         this.getLinks();
     },

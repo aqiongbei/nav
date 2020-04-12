@@ -31,21 +31,17 @@ export default {
     },
     methods: {
         t_start (item) {
-            console.log('start', item)
             this.touch_item = item;
             clearTimeout(this.timer);
             this.timer = setTimeout(this.notice, 500)
         },
         t_move () {
-            console.log('move')
             clearTimeout(this.timer);;
         },
         t_end () {
-            console.log('end')
             clearTimeout(this.timer);;
         },
         notice () {
-            console.log('long-touch', this.touch_item);
             this.$emit('long-touch', JSON.parse(JSON.stringify(this.touch_item)))
         },
         getDomain (url) {
@@ -68,6 +64,7 @@ export default {
         padding-right: 44px;
         margin-right: 10px;
         margin-bottom: 10px;
+        border: 1px solid #ccc;
 
         .icon {
             float: right;

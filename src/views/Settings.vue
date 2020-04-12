@@ -16,7 +16,7 @@
             </Cell>
         </CellGroup>
         <Switch :value="true"/>
-        <a :href="download_url" ref="download" download="nav_data.json" style="display: none;"></a>
+        <a ref="download" download="nav_data.json" style="display: none;"></a>
         <input ref="file_input" type="file" @change="fileReady" accept=".json" style="display: none;">
     </div>
 </template>
@@ -31,7 +31,6 @@ export default {
         return {
             settings,
             file: {},
-            download_url: '',
         }
     },
     methods: {
@@ -47,23 +46,37 @@ export default {
         },
         download (data) {
             let blob = new Blob([JSON.stringify(data)], { type: 'application/json' })
-            this.download_url = URL.createObjectURL(blob);
+            let download_url = URL.createObjectURL(blob);
+            this.$refs.download.href = download_url;
             this.$refs.download.click();
             setTimeout(() => {
-                URL.revokeObjectURL(this.download_url);
-                this.download_url = '';
-            })
+                URL.revokeObjectURL(download_url);
+                this.$refs.download.href = '';
+            }, 30)
         },
         fileReady (s) {
             let option = {
                 merge: this.settings[3].value
             };
-            console.log(s, option);
             let reader = new FileReader();
             reader.onload = () => {
-                this.$links.import(JSON.parse(reader.result), option);
+                try {
+                    this.$links.import(JSON.parse(reader.result), option);
+                    this.$Message.success('导入成功!');
+                } catch (e) {
+                    this.$Message.error(`导入失败!:${e}`);
+                }
+                this.$refs.file_input.value = '';
             }
-            reader.readAsText(this.$refs.file_input.files[0]);
+            let file = this.$refs.file_input.files[0];
+            if (file) {
+                if (file.type != 'application/json') {
+                    this.$Message.warning(`别骗我,你这可不是.json文件哦${file.type}`);
+                    this.$refs.file_input.value = '';
+                } else {
+                    reader.readAsText(file);
+                }
+            }
         }
     }
 }

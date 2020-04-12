@@ -22,20 +22,20 @@ const links = [{
 
 const banner = [{
     id: 1,
-    link: 'http://baidu.com',
-    img: 'https://img.zcool.cn/community/0111de5e904658a80120a895d7e063.jpg@1380w',
+    link: 'https://tophub.today/n/KqndgxeLl9',
+    img: 'https://file.ipadown.com/tophub/assets/images/media/s.weibo.com.png',
 }, {
     id: 2,
-    title: 'sssssss',
-    desc: 'sssaaaaaa',
-    link: 'http://baidu.com',
-    img: 'https://img.zcool.cn/community/01edb65e90a83ba80120a895d42c53.jpg',
+    link: 'https://tophub.today/n/mproPpoq6O',
+    img: 'https://file.ipadown.com/tophub/assets/images/media/zhihu.com.png',
 }, {
     id: 3,
-    title: 'sssssss',
-    desc: 'sssaaaaaa',
-    link: 'http://qq.com',
-    img: 'https://img.zcool.cn/community/0196905e90a7dda8012165189c3103.jpg',
+    link: 'https://tophub.today/n/74Kvx59dkx',
+    img: 'https://file.ipadown.com/tophub/assets/images/media/ithome.com.png',
+},{
+    id: 4,
+    link: 'https://tophub.today/n/G47o8weMmN',
+    img: 'https://file.ipadown.com/tophub/assets/images/media/bbs.hupu.com.png',
 }, ]
 
 const playground = {

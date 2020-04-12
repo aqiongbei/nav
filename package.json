@@ -1,6 +1,7 @@
 {
   "name": "nav",
-  "version": "0.1.0",
+  "version": "0.1.5",
+  "create_at": "2020-4-8",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
