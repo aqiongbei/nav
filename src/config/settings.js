@@ -112,7 +112,7 @@ const settings = [{
     icon: 'md-trash',
 }, {
     title: '意见反馈',
-    name: 'storage_clear',
+    name: 'feedback',
     disabled: false,
     extra: '吐个槽啥的',
     to: 'https://shimo.im/forms/YPGpC9hV6hvXyKpK/fill',
