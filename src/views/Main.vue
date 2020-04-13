@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper">
+    <div class="wrapper" @touchstart="touchHandler">
         <div class="content">
             <transition appear>
                 <keep-alive>
@@ -81,15 +81,19 @@ export default {
             e.preventDefault();
         });
     },
-    mounted () {
-        if (!this.$utils.isFullScreen()) {
-            window.removeEventListener('touchstart', this.$utils.fullScreen);
-            window.addEventListener('touchstart', this.$utils.fullScreen);
+    mounted () {},
+    methods: {
+        touchHandler (e) {
+            if (!this.$utils.isFullScreen()) {
+                let el = e.target;
+                if (el.className == 'content') {
+                    window.touch_el = e.target;
+                }
+            }
         }
     },
-    methods: {},
 }
-</script>
+</script> 
 <style lang="less">
 .content {
     padding: 10px 8px;

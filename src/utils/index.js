@@ -119,12 +119,8 @@ const _utils = {
             element.msExitFullscreen();
         }
     },
-    fullScreen (el) {
-        if (el) {
-            window.touch_el = el;
-        }
-        el = el || window.touch_el;
-        console.log('window.touch_el >>>', window.touch_el);
+    fullScreen () {
+        let el = window.touch_el;
         if (el.requestFullscreen) {
             el.requestFullscreen();
         } else if (el.mozRequestFullScreen) {

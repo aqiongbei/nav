@@ -52,7 +52,6 @@ export default {
                     } else {
                         this.$utils.exitFullscreen();
                     }
-                    console.log('full >>>', this.$utils.isFullScreen());
                     break;
                 case 'storage_clear':
                     localStorage.clear();
