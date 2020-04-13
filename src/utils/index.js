@@ -36,7 +36,7 @@ function setStorageItem(key, value) {
     localStorage[key] = JSON.stringify(value);
 }
 
-const links = {
+const _links = {
     get(type) {
         let link_id_list = getStorageItem('link_id_list', []);
         if (type == 'export') {
@@ -104,8 +104,41 @@ const links = {
     }
 };
 
+const _utils = {
+    isFullScreen () {
+      return  !! (document.fullscreen || document.mozFullScreen || document.webkitIsFullScreen || document.webkitFullScreen || document.msFullScreen);
+    },
+    exitFullscreen () {
+        if(document.exitFullScreen) {
+            document.exitFullScreen();
+        } else if(document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if(document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        } else if(element.msExitFullscreen) {
+            element.msExitFullscreen();
+        }
+    },
+    fullScreen (el) {
+        if (el) {
+            window.touch_el = el;
+        }
+        el = el || window.touch_el;
+        console.log('window.touch_el >>>', window.touch_el);
+        if (el.requestFullscreen) {
+            el.requestFullscreen();
+        } else if (el.mozRequestFullScreen) {
+            el.mozRequestFullScreen();
+        } else if (el.webkitRequestFullscreen) {
+            el.webkitRequestFullscreen();
+        } else if (el.msRequestFullscreen) {
+            el.msRequestFullscreen();
+        }
+    }
+};
 function utils(vue) {
-    vue.prototype.$links = links;
+    vue.prototype.$links = _links;
+    vue.prototype.$utils = _utils;
 }
 
 export default utils

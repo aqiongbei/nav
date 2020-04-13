@@ -81,6 +81,12 @@ export default {
             e.preventDefault();
         });
     },
+    mounted () {
+        if (!this.$utils.isFullScreen()) {
+            window.removeEventListener('touchstart', this.$utils.fullScreen);
+            window.addEventListener('touchstart', this.$utils.fullScreen);
+        }
+    },
     methods: {},
 }
 </script>
@@ -102,7 +108,7 @@ export default {
     border-radius: 14px;
     box-shadow: 0 2px 7px rgba(0,0,0,.15);
     .item {
-        width: 30%;
+        width: 33%;
         color: #282828;
         text-align: center;
         i {
