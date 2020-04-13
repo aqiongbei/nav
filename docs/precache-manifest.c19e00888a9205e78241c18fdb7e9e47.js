@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "feccd1106e55033cb79a",
+    "revision": "3a78f0e055bbfa7ce132",
     "url": "/nav/css/404.86aa7c43.css"
   },
   {
@@ -12,11 +12,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/nav/css/Playground.649ba64a.css"
   },
   {
-    "revision": "1000964fafef1400b04b",
+    "revision": "36a7bfdb00f265fc4ead",
     "url": "/nav/css/Settings.0e433876.css"
   },
   {
-    "revision": "7d18179c700b1e441c7f",
+    "revision": "549767e2c48dac9be1d0",
     "url": "/nav/css/app.365115bb.css"
   },
   {
@@ -40,12 +40,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/nav/img/ionicons.a2c4a261.svg"
   },
   {
-    "revision": "8c8d2cbee56a7fd77238792bd726f094",
+    "revision": "59debf47b96346c332a20613d68d8517",
     "url": "/nav/index.html"
   },
   {
-    "revision": "feccd1106e55033cb79a",
-    "url": "/nav/js/404.84ef3ea7.js"
+    "revision": "3a78f0e055bbfa7ce132",
+    "url": "/nav/js/404.c05458f2.js"
   },
   {
     "revision": "226e68836437533b4d58",
@@ -56,12 +56,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/nav/js/Playground.2b331507.js"
   },
   {
-    "revision": "1000964fafef1400b04b",
-    "url": "/nav/js/Settings.77a36b63.js"
+    "revision": "36a7bfdb00f265fc4ead",
+    "url": "/nav/js/Settings.311c622d.js"
   },
   {
-    "revision": "7d18179c700b1e441c7f",
-    "url": "/nav/js/app.c4d93748.js"
+    "revision": "549767e2c48dac9be1d0",
+    "url": "/nav/js/app.80feed2c.js"
   },
   {
     "revision": "9135eff3e45ed5dfef51",
