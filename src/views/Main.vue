@@ -1,7 +1,7 @@
 <template>
     <div class="wrapper" @touchstart="touchHandler">
         <div class="content">
-            <transition appear>
+            <transition name="fade" mode="out-in">
                 <keep-alive>
                     <router-view />
                 </keep-alive>
