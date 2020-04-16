@@ -76,7 +76,9 @@ export default {
             if (type == 'new') {
                 this.is_edit = false;
                 this.show_item = {};
+                this.$utils.report('点击', '新建按钮');
             } else {
+                this.$utils.report('长按', '编辑弹窗');
                 this.is_edit = true;
             }
             this.show_modal = true;

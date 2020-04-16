@@ -39,6 +39,7 @@ export default {
     },
     methods: {
         cellAction (name) {
+            this.$utils.report('点击', '设置项', settings.getDataByName(name).title);
             switch (name) {
                 case 'export':
                     this.download(this.$links.export());
@@ -47,7 +48,7 @@ export default {
                     this.$refs.file_input.click();
                     break;
                 case 'full_screen':
-                    if (this.settings[5].value) {
+                    if (settings.getDataByName(name).value) {
                         this.$utils.fullScreen();
                     } else {
                         this.$utils.exitFullscreen();
@@ -71,7 +72,7 @@ export default {
         },
         fileReady (s) {
             let option = {
-                merge: this.settings[3].value
+                merge: settings.getDataByName('merge').value
             };
             let reader = new FileReader();
             reader.onload = () => {

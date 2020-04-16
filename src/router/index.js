@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import utils from '../utils/index'
 import Main from '../views/Main.vue'
 
 Vue.use(VueRouter)
@@ -44,6 +45,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
+    utils().report('点击', '跳转', to.name);
     document.title = `${to.name}-自嗨导航`;
     next();
 })

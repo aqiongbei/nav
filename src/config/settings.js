@@ -127,4 +127,9 @@ const settings = [{
     to: '/about'
 }];
 
+settings.getDataByName = function(name) {
+    return settings.find(item => {
+        return item.name == name;
+    })
+}
 export default settings;
