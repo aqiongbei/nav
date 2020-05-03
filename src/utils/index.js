@@ -6,6 +6,7 @@ function getID() {
         id = localStorage.last_id.split('_')[1];
         id = `link_${++id}`;
     }
+    setLastId(id);
     return id;
 }
 
@@ -17,7 +18,7 @@ function isLargeThenLastId (id) {
 }
 
 function setLastId (id) {
-    if (isLargeThenLastId(id)) {
+    if (!localStorage.last_id || isLargeThenLastId(id)) {
         localStorage.last_id = id;
     }
 };
