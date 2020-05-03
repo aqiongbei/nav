@@ -10,7 +10,7 @@ function getID() {
     return id;
 }
 
-function isLargeThenLastId (id) {
+function isLargeThenLastId(id) {
     let current_last_id = localStorage.last_id || default_id;
     let current_id_number = Number(current_last_id.split('_')[1]);
     let new_id_number = Number(id.split('_')[1]);
@@ -37,7 +37,7 @@ function setStorageItem(key, value) {
     localStorage[key] = JSON.stringify(value);
 }
 
-const links = {
+const _links = {
     get(type) {
         let link_id_list = getStorageItem('link_id_list', []);
         if (type == 'export') {
@@ -77,7 +77,7 @@ const links = {
         })
         setStorageItem('link_id_list', link_id_list);
     },
-    export() {
+    export () {
         return {
             links: this.get('export'),
             link_id_list: getStorageItem('link_id_list', []),
@@ -105,8 +105,49 @@ const links = {
     }
 };
 
+const _utils = {
+    isFullScreen() {
+        return !!(document.fullscreen || document.mozFullScreen || document.webkitIsFullScreen || document.webkitFullScreen || document.msFullScreen);
+    },
+    exitFullscreen() {
+        if (document.exitFullScreen) {
+            document.exitFullScreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        } else if (element.msExitFullscreen) {
+            element.msExitFullscreen();
+        }
+    },
+    fullScreen() {
+        let el = window.touch_el;
+        if (!el) return;
+        if (el.requestFullscreen) {
+            el.requestFullscreen();
+        } else if (el.mozRequestFullScreen) {
+            el.mozRequestFullScreen();
+        } else if (el.webkitRequestFullscreen) {
+            el.webkitRequestFullscreen();
+        } else if (el.msRequestFullscreen) {
+            el.msRequestFullscreen();
+        }
+    },
+    report(action, category, label) {
+        window.gtag && window.gtag('event', action, {
+            event_category: category,
+            event_label: label
+        });
+    }
+};
+
 function utils(vue) {
-    vue.prototype.$links = links;
+    if (vue) {
+        vue.prototype.$links = _links;
+        vue.prototype.$utils = _utils;
+    } else {
+        return _utils;
+    }
 }
 
 export default utils

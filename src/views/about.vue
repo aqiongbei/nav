@@ -11,9 +11,10 @@
         </Card>
         <Card :bordered="false">
             <p slot="title">关于作者</p>
-            <p>aqiongbei 一个不务正业的小码农</p>
+            <p>aqiongbei</p>
+            <p>一个不务正业的小码农</p>
             <p>github地址: <a href="https://github.com/aqiongbei">https://github.com/aqiongbei</a></p>
-            <p>联系作者: <a href="mileto:aqiongbei@gmail.com">aqiongbei@gmail.com</a></p>
+            <p>联系作者: <a href="mailto:aqiongbei@gmail.com">aqiongbei@gmail.com</a></p>
         </Card>
         <Button icon="md-arrow-back" @click="goBack">看完了吧</Button>
     </div>

@@ -1,7 +1,7 @@
 <template>
-    <div class="wrapper">
+    <div class="wrapper" @touchstart="touchHandler">
         <div class="content">
-            <transition appear>
+            <transition name="fade" mode="out-in">
                 <keep-alive>
                     <router-view />
                 </keep-alive>
@@ -81,9 +81,19 @@ export default {
             e.preventDefault();
         });
     },
-    methods: {},
+    mounted () {},
+    methods: {
+        touchHandler (e) {
+            if (!this.$utils.isFullScreen()) {
+                let el = e.target;
+                if (el.className == 'content') {
+                    window.touch_el = e.target;
+                }
+            }
+        }
+    },
 }
-</script>
+</script> 
 <style lang="less">
 .content {
     padding: 10px 8px;
@@ -102,7 +112,7 @@ export default {
     border-radius: 14px;
     box-shadow: 0 2px 7px rgba(0,0,0,.15);
     .item {
-        width: 30%;
+        width: 33%;
         color: #282828;
         text-align: center;
         i {

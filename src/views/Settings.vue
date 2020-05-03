@@ -7,15 +7,21 @@
                 :name="item.name"
                 :disabled="item.disabled"
                 :extra="item.extra"
-                :to="item.to">
+                :to="item.to"
+                :target="item.target">
                 <Icon :type="item.icon" slot="icon" size="18"/>
-                <iSwitch v-if="item.value != undefined" v-model="item.value" size="large" false-color="#13ce66" slot="extra">
-                    <span slot="open">合并</span>
-                    <span slot="close">覆盖</span>
+                <iSwitch
+                    v-if="item.type == 'i_switch'"
+                    v-model="item.value"
+                    size="large"
+                    :true-color="item.options.true.color"
+                    :false-color="item.options.false.color"
+                    slot="extra">
+                    <span slot="open">{{item.options.true.label}}</span>
+                    <span slot="close">{{item.options.false.label}}</span>
                 </iSwitch>
             </Cell>
         </CellGroup>
-        <Switch :value="true"/>
         <a ref="download" download="nav_data.json" style="display: none;"></a>
         <input ref="file_input" type="file" @change="fileReady" accept=".json" style="display: none;">
     </div>
@@ -25,8 +31,6 @@ import settings from '@/config/settings'
 
 export default {
     name: 'Home',
-    components: {
-    },
     data () {
         return {
             settings,
@@ -35,12 +39,24 @@ export default {
     },
     methods: {
         cellAction (name) {
+            this.$utils.report('点击', '设置项', settings.getDataByName(name).title);
             switch (name) {
                 case 'export':
                     this.download(this.$links.export());
                     break;
                 case 'import':
                     this.$refs.file_input.click();
+                    break;
+                case 'full_screen':
+                    if (settings.getDataByName(name).value) {
+                        this.$utils.fullScreen();
+                    } else {
+                        this.$utils.exitFullscreen();
+                    }
+                    break;
+                case 'storage_clear':
+                    localStorage.clear();
+                    this.$Message.success('数据清空成功!');
                     break;
             }
         },
@@ -56,7 +72,7 @@ export default {
         },
         fileReady (s) {
             let option = {
-                merge: this.settings[3].value
+                merge: settings.getDataByName('merge').value
             };
             let reader = new FileReader();
             reader.onload = () => {
