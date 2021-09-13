@@ -106,33 +106,6 @@ const _links = {
 };
 
 const _utils = {
-    isFullScreen() {
-        return !!(document.fullscreen || document.mozFullScreen || document.webkitIsFullScreen || document.webkitFullScreen || document.msFullScreen);
-    },
-    exitFullscreen() {
-        if (document.exitFullScreen) {
-            document.exitFullScreen();
-        } else if (document.mozCancelFullScreen) {
-            document.mozCancelFullScreen();
-        } else if (document.webkitExitFullscreen) {
-            document.webkitExitFullscreen();
-        } else if (element.msExitFullscreen) {
-            element.msExitFullscreen();
-        }
-    },
-    fullScreen() {
-        let el = window.touch_el;
-        if (!el) return;
-        if (el.requestFullscreen) {
-            el.requestFullscreen();
-        } else if (el.mozRequestFullScreen) {
-            el.mozRequestFullScreen();
-        } else if (el.webkitRequestFullscreen) {
-            el.webkitRequestFullscreen();
-        } else if (el.msRequestFullscreen) {
-            el.msRequestFullscreen();
-        }
-    },
     report(action, category, label) {
         window.gtag && window.gtag('event', action, {
             event_category: category,

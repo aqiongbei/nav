@@ -76,23 +76,6 @@ const settings = [{
     extra: 'json文件',
     icon: 'md-cloud-upload',
 }, {
-    title: '强制全屏',
-    name: 'full_screen',
-    disabled: false,
-    type: 'i_switch',
-    value: true,
-    icon: 'md-expand',
-    options: {
-        true: {
-            color: '',
-            label: '开'
-        },
-        false: {
-            color: '',
-            label: '关'
-        }
-    }
-}, {
     title: '存储方式',
     name: 'storage_method',
     disabled: false,

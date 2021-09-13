@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper" @touchstart="touchHandler">
+    <div class="wrapper">
         <div class="content">
             <transition name="fade" mode="out-in">
                 <keep-alive>
@@ -82,16 +82,7 @@ export default {
         });
     },
     mounted () {},
-    methods: {
-        touchHandler (e) {
-            if (!this.$utils.isFullScreen()) {
-                let el = e.target;
-                if (el.className == 'content') {
-                    window.touch_el = e.target;
-                }
-            }
-        }
-    },
+    methods: {},
 }
 </script> 
 <style lang="less">

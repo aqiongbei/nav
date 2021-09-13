@@ -47,13 +47,6 @@ export default {
                 case 'import':
                     this.$refs.file_input.click();
                     break;
-                case 'full_screen':
-                    if (settings.getDataByName(name).value) {
-                        this.$utils.fullScreen();
-                    } else {
-                        this.$utils.exitFullscreen();
-                    }
-                    break;
                 case 'storage_clear':
                     localStorage.clear();
                     this.$Message.success('数据清空成功!');
