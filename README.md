@@ -31,5 +31,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### TODO
 
-- 链接tag拖拽排序
-- 页面切换动画
+[] 链接tag拖拽排序
+[] <s>页面切换动画</s>
+[] 使用引导
+[] 性能优化
+[] icon优化(展示一个汉字)
