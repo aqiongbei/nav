@@ -1,34 +1,7 @@
 <template>
-    <div class="home-wrapper">
-        <Affix class="tools" v-if="list.length || search">
-            <div v-if="edit" class="btns-wrapper">
-                <span @click="operateDone('cancel')">
-                    <Icon type="md-close" color="#2db7f5"/> 放弃
-                </span>
-                <span @click="operateDone('ok')">
-                    <Icon type="md-checkmark" color="#19be6b"/> 完成
-                </span>
-            </div>
-            <div
-                class="search-wrapper"
-                v-else-if="search"
-            >
-                <Input
-                    search
-                    enter-button
-                    @on-search="doSearch"
-                    placeholder="请输入链接名称或者链接地址"
-                />
-                <Button type="text" @click="cancelSearch">取消</Button>
-            </div>
-            <div v-else class="btns-wrapper">
-                <span @click="showSearch">
-                    <Icon type="md-search" /> 搜索
-                </span>
-                <span @click="edit = true;">
-                    <Icon type="md-list"/> 批量删除
-                </span>
-            </div>
+    <div class="search-page-wrapper">
+        <Affix class="tools">
+
         </Affix>
         <Links
             v-if="list.length"
@@ -39,8 +12,7 @@
         ></Links>
         <div v-else class="no-data-info">
             <h5>空</h5>
-            <p v-if="search">暂无满足条件的数据</p>
-            <p v-else>我的天呐!这里有个大写的空<br>赶紧去<span @click="openDialog('new')">添加链接</span>吧</p>
+            <p>暂无满足条件的数据</p>
         </div>
         <Button shape="circle" icon="md-add" type="primary" class="add-btn" @click="openDialog('new')"></Button>
         <Modal
@@ -121,26 +93,6 @@ export default {
             }
             this.getLinks();
         },
-        showSearch() {
-            this.search = true;
-            this.list = [];
-        },
-        doSearch(keyword) {
-            let list = this.$links.find();
-            this.list = list.filter(item => {
-                if (item.name && item.name.includes(keyword)) {
-                    return true;
-                } else if(item.link.includes(keyword)) {
-                    return true;
-                } else {
-                    return false;
-                }
-            });
-        },
-        cancelSearch() {
-            this.search = false;
-            this.getLinks();
-        },
         openDialog (type) {
             if (type == 'new') {
                 this.is_edit = false;
@@ -182,17 +134,10 @@ export default {
 }
 </script>
 <style lang="less">
-.home-wrapper {
+.search-page-wrapper {
     text-align: left;
     .tools {
         padding-bottom: 10px;
-        .btns-wrapper {
-            display: flex;
-            justify-content: space-between;
-        }
-        .search-wrapper {
-            display: flex;
-        }
     }
     .no-data-info {
         text-align: center;

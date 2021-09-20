@@ -10,30 +10,6 @@ function getStorageUsedSize() {
     return `${(size / 1024).toFixed(2)} KB`;
 }
 
-function getStorageAllSize () {
-    var test = '0123456789';
-    var add = function(num) {
-        num += num;
-        if (num.length == 10240) {
-            test = num;
-            return;
-        }
-        add(num);
-    }
-    add(test);
-    var sum = test;
-    var show = setInterval(function() {
-        sum += test;
-        try {
-            localStorage.removeItem('test');
-            localStorage.setItem('test', sum);
-        } catch (e) {
-            clearInterval(show);
-            localStorage.removeItem('test');
-            return `${Math.round(sum.length / 1024 / 2014)} MB`
-        }
-    }, 0.1)
-}
 const settings = [{
     title: '绑定账户',
     name: 'bind-account',

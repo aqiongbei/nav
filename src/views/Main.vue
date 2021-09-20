@@ -86,6 +86,11 @@ export default {
 }
 </script> 
 <style lang="less">
+.wrapper {
+    .ivu-affix {
+        width: 100vw !important;
+    }
+}
 .content {
     padding: 10px 8px;
     background: #f4f4f4;
@@ -98,12 +103,13 @@ export default {
 }
 .nav {
     margin: 0 20px;
-    padding: 4px 0;
+    padding: 6px 8px;
     background: #fff;
-    border-radius: 14px;
+    border-radius: 16px;
     box-shadow: 0 2px 7px rgba(0,0,0,.15);
+    display: flex;
     .item {
-        width: 33%;
+        flex: 1;
         color: #282828;
         text-align: center;
         i {
@@ -117,6 +123,13 @@ export default {
         &.active {
             color: #6a8de5;
         }
+    }
+}
+@media (min-width: 800px) {
+    .nav {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 8px;
     }
 }
 </style>
